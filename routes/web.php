@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,80 +14,22 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::resource("posts",PostController::class); 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/users', function () {
-    $users=[
-["id"=>1,
-"name"=>"shaimaa",
-"email"=>"shaimaa@gmail.com",
-"city"=>"egypt"],
-
-
-["id"=>2,
-"name"=>"asmaa",
-"email"=>"asmaa@gmail.com",
-"city"=>"london"],
+// Route::get('/posts',[PostController::class,"index"])->name("posts.index");
 
 
-["id"=>3,
-"name"=>"soha",
-"email"=>"soha@gmail.com",
-"city"=>"sudan"],
+// Route::get('/posts/{id}/show', [PostController::class,"show"])->where('id', '[0-9]+')->name("posts.show");
 
 
-["id"=>4,
-"name"=>"noha",
-"email"=>"noha@gmail.com",
-"city"=>"moroco"],
-];
-    return view("users.index",["users"=>$users]);
-});
+// Route::get('/posts/{id}/edit', [PostController::class,"edit"])->where('id', '[0-9]+')->name("posts.edit");
 
 
+// Route::post('/posts/update',[PostController::class,"update"])->name("posts.update");
 
-Route::get('/show/{id}', function ($id){
+// Route::get('/posts/create',[PostController::class,"create"])->name("posts.create");
 
-    $user=
-        ["id"=>$id,
-        "name"=>"shaimaa",
-        "email"=>"shaimaa@gmail.com",
-        "city"=>"egypt"];
-
-return view('users.show',$user);
-
-})->where('id','[0-9]+');
-
-
-Route::get('/edit/{id}', function ($id){
-
-    $user=
-        ["id"=>$id,
-        "name"=>"shaimaa",
-        "email"=>"shaimaa@gmail.com",
-        "city"=>"egypt"];
-
-return view('users.edit',$user);
-
-})->where('id','[0-9]+');
-
-
-Route::post("/update", function (){
-
-
-return "update is done";
-
-});
-
-Route::get("/create", function (){
-
-
-    return view("users.create");
-    
-    });
-
-    Route::post("/store", function (){
-
-
-        return "user is stored";
-        
-        });
+// Route::post('/posts',[PostController::class,"store"])->name("posts.store");
